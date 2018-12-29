@@ -11,9 +11,29 @@ provider:
   runtime: nodejs8.10
 
 functions:
-  hello:
-    handler: handler.hello
+  h01ListVerifiedEmailsHandler:
+    handler: handlers/01-list-verified-emails.handler.h01ListVerifiedEmailsHandler
     events:
       - http:
           method: GET
+          path: list
+  h02AddNewEmailHandler:
+    handler: handlers/02-add-new-email.handler.h02AddNewEmailHandler
+    events:
+      - http:
+          method: GET
+          path: add
+  h03SendMailHandler:
+    handler: handlers/03-send-mail.handler.h03SendMailHandler
+    events:
+      - http:
+          method: POST
           path: mail
+  h04DeleteEmailHandler:
+    handler: handlers/04-delete-email.handler.h04DeleteEmailHandler
+    events:
+      - http:
+          method: GET
+          path: delete
+  
+ 
