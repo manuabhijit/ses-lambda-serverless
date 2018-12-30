@@ -8,7 +8,9 @@
     "start": "serverless offline start"
   },
   "dependencies": {
-    "aws-sdk": "^2.382.0"
+    "@types/jsonschema": "^1.1.1",
+    "aws-sdk": "^2.382.0",
+    "jsonschema": "^1.2.4"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.1",

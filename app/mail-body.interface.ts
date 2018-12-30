@@ -1,5 +1,6 @@
 export interface MailBody{
-  html: string
+  html: string;
+  data?: any;
 }
 
 export interface EmailIdObject{

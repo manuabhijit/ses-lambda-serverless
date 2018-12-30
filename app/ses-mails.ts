@@ -44,7 +44,7 @@ export class SesMails{
       
     let params = {
         RawMessage: { Data: new Buffer(MIME) },
-        Destinations: [ mailingObject.mailFrom.email ],
+        Destinations: [ mailingObject.mailTo.email ],
         Source: "'AWS Tutorial Series' <" + mailingObject.mailFrom.email + ">'"
     };
       
