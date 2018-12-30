@@ -1,7 +1,9 @@
+import { T01_SAMPLE } from './01-template.html';
+
 export interface HtmlTemplateMap {
   subject: string;
   description: string;
-  filename: string;
+  html: string;
   attachments: string[];
   status: boolean;
   replacements: string[];
@@ -15,7 +17,7 @@ export const HTML_TEMPLATE_MAPING: HtmlTemplateMaping = {
   1: {
     subject: "Contact Request",
     description: "Contact Request",
-    filename: "01-template.html",
+    html: T01_SAMPLE.replace(/$\n^\s*/gm, ' '),
     attachments: [],
     status: true,
     replacements: ["html"]
@@ -25,7 +27,7 @@ export const HTML_TEMPLATE_MAPING: HtmlTemplateMaping = {
 export const HTML_DEFAULT_TEMPLATE: HtmlTemplateMap = {
   subject: "Begin your E-Way Bill setup",
   description: "Blank html",
-  filename: "00-blank.html",
+  html: "",
   attachments: [],
   status: true,
   replacements: ["html"]

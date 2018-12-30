@@ -1,0 +1,1 @@
+export const T01_SAMPLE: string = `<h1>Abc</h1>`;

@@ -4,7 +4,7 @@ export const MAIL_OBJECT_SCHEMA: Schema = {
   definitions: {},
   $schema: "http://json-schema.org/draft-07/schema#",
   type: "object",
-  required: ["mailTo", "mailFrom", "subject", "mailBody"],
+  required: ["mailTo", "mailFrom", "mailBody"],
   properties: {
     mailTo: {
       type: "object",
@@ -33,10 +33,6 @@ export const MAIL_OBJECT_SCHEMA: Schema = {
           pattern: "^(.*)$"
         }
       }
-    },
-    subject: {
-      type: "string",
-      pattern: "^(.*)$"
     },
     mailBody: {
       type: "object",

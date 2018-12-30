@@ -16,8 +16,11 @@ export const h03SendMailHandler: Handler = (event: APIGatewayEvent, context: Con
   })
   .then( _ => {
     console.log("Check 2: Payload was valid JSON.");
-    let mailObject: MailingObject = payload;    
-    mailObject.mailBody.html = new TemplateRenderer(mailObject.mailBody.template_id, mailObject.mailBody.replacements).getHTML();
+    let mailObject: MailingObject = payload;
+    let templateRenderer: TemplateRenderer = new TemplateRenderer(mailObject.mailBody.template_id, mailObject.mailBody.replacements)
+    mailObject.mailBody.html = templateRenderer.getHTML();
+    mailObject.subject = templateRenderer.getSubject();
+    //return Promise.resolve({a:9});
     return new SesMails().send(mailObject);
   })
   .then(sesResponse => {
