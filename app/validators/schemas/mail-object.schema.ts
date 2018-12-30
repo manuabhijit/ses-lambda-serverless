@@ -40,16 +40,13 @@ export const MAIL_OBJECT_SCHEMA: Schema = {
     },
     mailBody: {
       type: "object",
-      required: ["data"],
+      required: ["template_id", "replacements"],
       properties: {
-        data: {
-          type: "object",
-          required: ["replacements"],
-          properties: {
-            replacements: {
-              type: "object"
-            }
-          }
+        template_id: {
+          type: "integer"
+        },
+        replacements: {
+          type: "object"
         }
       }
     }

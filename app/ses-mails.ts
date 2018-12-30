@@ -24,7 +24,7 @@ export class SesMails{
     return this.SES.deleteVerifiedEmailAddress({EmailAddress: email}).promise();
   }
 
-  public send(mailingObject: MailingObject){
+  public send(mailingObject: MailingObject){    
     let MIME: string = `From: '${mailingObject.mailFrom.name}' <${mailingObject.mailFrom.email}>\n`;
     MIME = `${MIME}To:'${mailingObject.mailTo.name}' <${mailingObject.mailTo.email}>\n`;
     MIME = `${MIME}Subject:${mailingObject.subject}\n`;

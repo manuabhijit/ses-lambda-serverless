@@ -1,6 +1,11 @@
+export interface Replacements{
+  [key: string]: string;
+}
+
 export interface MailBody{
-  html: string;
-  data?: any;
+  template_id: number;
+  replacements: Replacements;
+  html: string; 
 }
 
 export interface EmailIdObject{

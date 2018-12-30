@@ -1,3 +1,4 @@
+import { TemplateRenderer } from './../app/mailing-templates/template-renderer';
 import { JsonUtility } from './../utility/utility';
 import { APIGatewayEvent, Callback, Context, Handler } from 'aws-lambda';
 import { MailingObject } from './../app/mail-body.interface';
@@ -6,17 +7,17 @@ import { MailObjectValidator } from './../app/validators/mail-object.validator';
 import { ValidatorResult } from 'jsonschema';
 
 export const h03SendMailHandler: Handler = (event: APIGatewayEvent, context: Context, cb: Callback) => {
-  
   let payload: any = {};
 
   JsonUtility.isJsonStringByPromise(event.body).then( _ => {
-    console.log("Check 1: Payload was JSON");
+    console.log("Check 1: Payload was JSON.");
     payload = JSON.parse(event.body);
     return new MailObjectValidator().validate(payload).promise();
   })
   .then( _ => {
-    console.log("Check 2: Payload was valid JSON");
-    let mailObject: MailingObject = payload;
+    console.log("Check 2: Payload was valid JSON.");
+    let mailObject: MailingObject = payload;    
+    mailObject.mailBody.html = new TemplateRenderer(mailObject.mailBody.template_id, mailObject.mailBody.replacements).getHTML();
     return new SesMails().send(mailObject);
   })
   .then(sesResponse => {
