@@ -27,7 +27,8 @@ export const h03SendMailHandler: Handler = (event: APIGatewayEvent, context: Con
     };
     cb(null, response);    
   }).catch(err => {
-    console.log("Check Failed: ", err);  
+    console.log("Check Failed: ", err);
+    
     if(err instanceof ValidatorResult) err = err.errors;
     
     let response = {
